@@ -1,0 +1,103 @@
+{
+  "user": {
+    "lastName": "Nom",
+    "firstName": "Prénom",
+    "email": "E-Mail",
+    "password": "Mot de passe",
+    "droit": "Droit associé",
+    "force": "Forcer vente ?",
+    "actif": "Actif ?"
+  },
+  "button": {
+    "save": "Sauvegarder",
+    "clear": "Effacer",
+    "update": "Mettre à jour",
+    "delete": "Supprimer"
+  },
+  "rg": {
+    "ageEnfant": "Age enfant min.",
+    "dateAnciennete": "Date ancienneté",
+    "titre": "Renseignements généraux"
+  },
+  "typeContrat": {
+    "libelle": "Libellé",
+    "droit": "Droit achat ?",
+    "actif": "Actif ?"
+  },
+  "typeArticle": {
+    "titre": "Type d'articles",
+    "libelle": "Libellé",
+    "quantiteMois": "Quantité / mois",
+    "quantiteAn": "Quantité / An",
+    "gestionStock": "Gestion de stock ?",
+    "actif": "Actif ?",
+    "montantMois": "Montant / mois",
+    "montantAn": "Montant / an",
+    "anciennete": "Ancienneté requise",
+    "moisInterditVente": "Mois interdits à la vente "
+  },
+  "login": {
+    "titre": "Identification",
+    "identifiant": "Identifiant",
+    "placeholder": {
+      "identifiant": "Saisissez votre identifiant",
+      "password": "Saisissez votre mot de passe"
+    },
+    "password": "Mot de passe",
+    "button": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "menu": {
+    "vente": {
+      "titre": "Vente",
+      "acces": "V",
+      "children": [
+        {
+          "titre": "Nouvelle vente",
+          "route": "vente"
+        }
+      ]
+    },
+    "administration": {
+      "titre": "Administration",
+      "acces": "A",
+      "children": [
+        {
+          "titre": "Approvisionnement",
+          "route": "approvisonnement"
+        },
+        { "titre": "Articles", "route": "articles" },
+        {
+          "titre": "Renseignements généraux",
+          "route": "rg"
+        },
+        { "titre": "Salariés", "route": "salarie" },
+        { "titre": "Type d'articles", "route": "typart" },
+        { "titre": "Types de contrat", "route": "typecon" },
+        { "titre": "Utilisateurs", "route": "users" }
+      ]
+    },
+    "edition": {
+      "titre": "Edition",
+      "acces": "A",
+      "children": [
+        { "titre": "Alerte de stock", "route": "stkalert" },
+        { "titre": "Etat des stocks", "route": "stketat" },
+        {
+          "titre": "Consommation individuelle",
+          "route": "consommation"
+        }
+      ]
+    },
+    "traitement": {
+      "titre": "Traitement",
+      "acces": "A",
+      "children": [
+        {
+          "titre": "Traitement",
+          "route": "traitement"
+        }
+      ]
+    }
+  }
+}

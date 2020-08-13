@@ -1,0 +1,32 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { TypeArticleComponent } from './components/article/type-article.component';
+import { TypeContratComponent } from './components/contrat/type-contrat.component';
+import { LoginComponent } from './components/login/login.component';
+import { RgComponent } from './components/rg/rg.component';
+import { UsersComponent } from './components/users/users.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LogginGuard } from './core/services/login/loggin.guard';
+
+const routes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'rg', component: RgComponent, canActivate: [LogginGuard] },
+  {
+    path: 'typcon',
+    component: TypeContratComponent,
+    canActivate: [LogginGuard],
+  },
+  {
+    path: 'typart',
+    component: TypeArticleComponent,
+    canActivate: [LogginGuard],
+  },
+  { path: 'users', component: UsersComponent, canActivate: [LogginGuard] },
+  { path: '**', component: PageNotFoundComponent },
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}

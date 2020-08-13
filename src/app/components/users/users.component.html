@@ -1,0 +1,156 @@
+<app-message-modal
+  *ngIf="displayMessageModal"
+  [messageModal]="messageModal"
+></app-message-modal>
+
+<div class="div-add-user">
+  <form #addUserForm="ngForm" (ngSubmit)="saveOrUpdateUser(addUserForm)">
+    <fieldset>
+      <legend></legend>
+      <span
+        ><label for="nom" class="user-label">{{
+          "user.firstName" | translate
+        }}</label
+        ><input
+          name="nom"
+          class="user-input"
+          type="text"
+          required
+          [(ngModel)]="user.firstName"
+      /></span>
+      <span
+        ><label for="Prenom" class="user-label">{{
+          "user.lastName" | translate
+        }}</label
+        ><input
+          name="prenom"
+          class="user-input"
+          type="text"
+          required
+          [(ngModel)]="user.lastName"
+      /></span>
+      <span
+        ><label for="Email" class="user-label">{{
+          "user.email" | translate
+        }}</label
+        ><input
+          name="email"
+          class="user-input"
+          type="text"
+          required
+          [(ngModel)]="user.email"
+      /></span>
+      <span
+        ><label for="Password" class="user-label">{{
+          "user.password" | translate
+        }}</label
+        ><input
+          name="password"
+          class="user-input"
+          type="password"
+          required
+          [(ngModel)]="user.password"
+      /></span>
+      <span
+        ><label for="Droit" class="user-label">{{
+          "user.droit" | translate
+        }}</label>
+        <select
+          [(ngModel)]="user.right"
+          name="right"
+          required
+          class="user-input"
+        >
+          <option *ngFor="let c of droits" [ngValue]="c.id">{{
+            c.value
+          }}</option>
+        </select>
+      </span>
+
+      <span
+        ><label for="Force" class="user-label">{{
+          "user.force" | translate
+        }}</label
+        ><input
+          name="force"
+          class="user-input"
+          type="checkbox"
+          value="A"
+          [(ngModel)]="user.force"
+      /></span>
+
+      <span
+        ><label for="Actif" class="user-label">{{
+          "user.actif" | translate
+        }}</label
+        ><input
+          name="actif"
+          class="user-input"
+          type="checkbox"
+          checked
+          [(ngModel)]="user.actif"
+      /></span>
+
+      <span
+        ><input
+          [value]="actionButton"
+          class="user-submit-button"
+          type="submit"
+          [disabled]="!addUserForm.form.valid"
+      /></span>
+      <span class="span-user-submit"></span>
+
+      <span class="span-user-submit"></span>
+      <button class="clear-form-button" (click)="clearForm(addUserForm)">
+        {{ "button.clear" | translate }}
+      </button>
+    </fieldset>
+  </form>
+</div>
+<div class="div-search-user">
+  <fieldset class="fieldset-search-user">
+    <ng-container>
+      <table>
+        <tr>
+          <td>{{ "user.lastName" | translate }}</td>
+          <td>{{ "user.firstName" | translate }}</td>
+          <td>{{ "user.email" | translate }}</td>
+          <td>{{ "user.droit" | translate }}</td>
+          <td>{{ "user.force" | translate }}</td>
+          <td>{{ "user.actif" | translate }}</td>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr class="user.id" *ngFor="let user of users | async">
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.right }}</td>
+          <td>{{ user.force }}</td>
+          <td>{{ user.actif }}</td>
+          <td>
+            <button
+              value="Update"
+              type="submit"
+              class="button-update-user"
+              (click)="setUpdateUser(user)"
+            >
+              {{ updateLabel }}
+            </button>
+          </td>
+          <td>
+            <button
+              value="Delete"
+              type="submit"
+              class="button-delete-user"
+              (click)="deleteUser(user)"
+            >
+              {{ deleteLabel }}
+            </button>
+          </td>
+        </tr>
+      </table>
+    </ng-container>
+  </fieldset>
+</div>
+<!--app-back-to-menu></app-back-to-menu-->

@@ -1,0 +1,105 @@
+<app-message-modal
+  *ngIf="displayMessageModal"
+  [messageModal]="messageModal"
+></app-message-modal>
+
+<div class="div-add-typeContrat">
+  <form
+    #addContratForm="ngForm"
+    (ngSubmit)="saveOrUpdateContrat(addContratForm)"
+  >
+    <fieldset>
+      <legend></legend>
+      <span
+        ><label for="nom" class="typeContrat-label">{{
+          "typeContrat.libelle" | translate
+        }}</label
+        ><input
+          name="nom"
+          class="typeContrat-input"
+          type="text"
+          required
+          [(ngModel)]="typeContrat.libelle"
+      /></span>
+      <span
+        ><label for="Droit" class="typeContrat-label">{{
+          "typeContrat.droit" | translate
+        }}</label>
+        <input
+          name="droit"
+          class="typeContrat-input"
+          type="checkbox"
+          checked
+          [(ngModel)]="typeContrat.droit"
+        />
+      </span>
+
+      <span
+        ><label for="Actif" class="typeContrat-label">{{
+          "typeContrat.actif" | translate
+        }}</label
+        ><input
+          name="actif"
+          class="typeContrat-input"
+          type="checkbox"
+          checked
+          [(ngModel)]="typeContrat.actif"
+      /></span>
+
+      <span
+        ><input
+          [value]="actionButton"
+          class="typeContrat-submit-button"
+          type="submit"
+          [disabled]="!addContratForm.form.valid"
+      /></span>
+      <span class="span-typeContrat-submit"></span>
+
+      <span class="span-typeContrat-submit"></span>
+      <button class="clear-form-button" (click)="clearForm(addContratForm)">
+        {{ "button.clear" | translate }}
+      </button>
+    </fieldset>
+  </form>
+</div>
+<div class="div-search-typeContrat">
+  <fieldset class="fieldset-search-typeContrat">
+    <ng-container>
+      <table>
+        <tr>
+          <td>{{ "typeContrat.libelle" | translate }}</td>
+          <td>{{ "typeContrat.droit" | translate }}</td>
+          <td>{{ "typeContrat.actif" | translate }}</td>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr class="typeContrat.id" *ngFor="let typeContrat of contrats | async">
+          <td>{{ typeContrat.libelle }}</td>
+          <td>{{ typeContrat.droit }}</td>
+          <td>{{ typeContrat.actif }}</td>
+          <td>
+            <button
+              value="Update"
+              type="submit"
+              class="button-update-typeContrat"
+              (click)="setUpdateContrat(typeContrat)"
+            >
+              {{ updateLabel }}
+            </button>
+          </td>
+          <td>
+            <button
+              value="Delete"
+              type="submit"
+              class="button-delete-typeContrat"
+              (click)="deleteContrat(typeContrat)"
+            >
+              {{ deleteLabel }}
+            </button>
+          </td>
+        </tr>
+      </table>
+    </ng-container>
+  </fieldset>
+</div>
+<!--app-back-to-menu></app-back-to-menu-->

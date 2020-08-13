@@ -1,0 +1,184 @@
+<app-message-modal
+  *ngIf="displayMessageModal"
+  [messageModal]="messageModal"
+></app-message-modal>
+
+<div class="div-add-typeArticle">
+  <form
+    #addArticleForm="ngForm"
+    (ngSubmit)="saveOrUpdateArticle(addArticleForm)"
+  >
+    <fieldset>
+      <legend>{{ "typeArticle.titre" | translate }}</legend>
+      <span
+        ><label for="nom" class="typeArticle-label">{{
+          "typeArticle.libelle" | translate
+        }}</label
+        ><input
+          name="nom"
+          class="typeArticle-input"
+          type="text"
+          required
+          [(ngModel)]="typeArticle.libelle"
+      /></span>
+      <span
+        ><label for="Prenom" class="typeArticle-label">{{
+          "typeArticle.quantiteMois" | translate
+        }}</label
+        ><input
+          name="prenom"
+          class="typeArticle-input"
+          type="text"
+          required
+          [(ngModel)]="typeArticle.quantiteMois"
+      /></span>
+      <span
+        ><label for="Email" class="typeArticle-label">{{
+          "typeArticle.quantiteAn" | translate
+        }}</label
+        ><input
+          name="quantiteAn"
+          class="typeArticle-input"
+          type="text"
+          required
+          [(ngModel)]="typeArticle.quantiteAn"
+      /></span>
+      <span
+        ><label for="montantMois" class="typeArticle-label">{{
+          "typeArticle.montantMois" | translate
+        }}</label
+        ><input
+          name="montantMois"
+          class="typeArticle-input"
+          type="montantMois"
+          required
+          [(ngModel)]="typeArticle.montantMois"
+      /></span>
+      <span
+        ><label for="montantAn" class="typeArticle-label">{{
+          "typeArticle.montantAn" | translate
+        }}</label
+        ><input
+          name="montantAn"
+          class="typeArticle-input"
+          type="text"
+          required
+          [(ngModel)]="typeArticle.montantAn"
+      /></span>
+      <span
+        ><label for="anciennete" class="typeArticle-label">{{
+          "typeArticle.anciennete" | translate
+        }}</label
+        ><input
+          name="anciennete"
+          class="typeArticle-input"
+          type="anciennete"
+          required
+          [(ngModel)]="typeArticle.anciennete"
+      /></span>
+
+      <span
+        ><label for="moisInterditVente" class="typeArticle-label">{{
+          "typeArticle.moisInterditVente" | translate
+        }}</label
+        ><input
+          name="moisInterditVente"
+          class="typeArticle-input"
+          type="text"
+          [(ngModel)]="typeArticle.moisInterditVente"
+      /></span>
+
+      <span
+        ><label for="gestionStock" class="typeArticle-label">{{
+          "typeArticle.gestionStock" | translate
+        }}</label
+        ><input
+          name="gestionStock"
+          class="typeArticle-input"
+          type="checkbox"
+          checked
+          [(ngModel)]="typeArticle.gestionStock"
+      /></span>
+      <span
+        ><label for="Actif" class="typeArticle-label">{{
+          "typeArticle.actif" | translate
+        }}</label
+        ><input
+          name="actif"
+          class="typeArticle-input"
+          type="checkbox"
+          checked
+          [(ngModel)]="typeArticle.actif"
+      /></span>
+
+      <span
+        ><input
+          [value]="actionButton"
+          class="typeArticle-submit-button"
+          type="submit"
+          [disabled]="!addArticleForm.form.valid"
+      /></span>
+      <span class="span-typeArticle-submit"></span>
+
+      <span class="span-typeArticle-submit"></span>
+      <button class="clear-form-button" (click)="clearForm(addArticleForm)">
+        {{ "button.clear" | translate }}
+      </button>
+    </fieldset>
+  </form>
+</div>
+<div class="div-search-typeArticle">
+  <fieldset class="fieldset-search-typeArticle">
+    <ng-container>
+      <table>
+        <tr>
+          <td>{{ "typeArticle.libelle" | translate }}</td>
+          <td>{{ "typeArticle.quantiteMois" | translate }}</td>
+          <td>{{ "typeArticle.quantiteAn" | translate }}</td>
+          <td>{{ "typeArticle.montantMois" | translate }}</td>
+          <td>{{ "typeArticle.montantAn" | translate }}</td>
+          <td>{{ "typeArticle.anciennete" | translate }}</td>
+          <td>{{ "typeArticle.moisInterditVente" | translate }}</td>
+          <td>{{ "typeArticle.gestionStock" | translate }}</td>
+          <td>{{ "typeArticle.actif" | translate }}</td>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr
+          class="typeArticle.id"
+          *ngFor="let typeArticle of articles$ | async"
+        >
+          <td>{{ typeArticle.libelle }}</td>
+          <td>{{ typeArticle.quantiteMois }}</td>
+          <td>{{ typeArticle.quantiteAn }}</td>
+          <td>{{ typeArticle.montantMois }}</td>
+          <td>{{ typeArticle.montantAn }}</td>
+          <td>{{ typeArticle.moisInterditVente }}</td>
+          <td>{{ typeArticle.gestionStock }}</td>
+          <td>{{ typeArticle.actif }}</td>
+          <td>
+            <button
+              value="Update"
+              type="submit"
+              class="button-update-typeArticle"
+              (click)="setUpdateArticle(typeArticle)"
+            >
+              {{ updateLabel }}
+            </button>
+          </td>
+          <td>
+            <button
+              value="Delete"
+              type="submit"
+              class="button-delete-typeArticle"
+              (click)="deleteArticle(typeArticle)"
+            >
+              {{ deleteLabel }}
+            </button>
+          </td>
+        </tr>
+      </table>
+    </ng-container>
+  </fieldset>
+</div>
+<!--app-back-to-menu></app-back-to-menu-->

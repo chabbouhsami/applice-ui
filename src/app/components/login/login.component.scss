@@ -1,0 +1,60 @@
+.div-add-rg {
+  margin-bottom: 2em;
+  text-align: left;
+  border: 10px solid white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  background-color: white;
+}
+
+.form-group {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+span {
+  display: block;
+  margin-bottom: 1.5em;
+}
+.rg-label {
+  margin-right: 10em;
+}
+.rg-input {
+  width: 20%;
+  height: 2em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  border-radius: 4px; /* Rounded borders */
+  border: 1px solid #ccc; /* Gray border */
+  position: absolute;
+  left: 20em;
+}
+
+.rg-submit-button,
+.clear-form-button {
+  margin-right: 1em;
+  border-radius: 4px; /* Rounded borders */
+  background-color: #42a948; /* Rounded borders */
+  border: 1px solid #ccc; /* Gray Color border */
+  height: 1.7em;
+  width: 10%;
+  color: white;
+  font-size: 18px;
+  position: relative;
+  left: 20em;
+}
+
+.rg-submit-button:hover,
+.clear-form-button:hover {
+  cursor: pointer;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+  border-left: 5px solid #42a948; /* green */
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; /* red */
+}

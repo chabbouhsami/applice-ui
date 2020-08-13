@@ -1,0 +1,53 @@
+<app-message-modal
+  *ngIf="displayMessageModal"
+  [messageModal]="messageModal"
+></app-message-modal>
+
+<div class="div-add-rg">
+  <form #addRgForm="ngForm" (ngSubmit)="saveOrUpdateRg(addRgForm)">
+    <fieldset>
+      <legend>{{ "rg.titre" | translate }}</legend>
+      <span
+        ><label for="age" class="rg-label">{{
+          "rg.ageEnfant" | translate
+        }}</label
+        ><input
+          name="age"
+          class="rg-input"
+          type="text"
+          required
+          [(ngModel)]="rg.ageEnfant"
+      /></span>
+      <span
+        ><label for="Anciennete" class="rg-label">{{
+          "rg.dateAnciennete" | translate
+        }}</label
+        ><input
+          name="anciennete"
+          class="rg-input"
+          [matDatepicker]="anciennete"
+          required
+          [(ngModel)]="rg.dateAnciennete"
+          placeholder="DD/MM/YYYY"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="anciennete"
+          placeholder="mm/dd/yyyy"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #anciennete></mat-datepicker>
+      </span>
+
+      <input cdkFocusInitial type="text" style="display: none;" />
+
+      <span
+        ><input
+          [value]="actionButton"
+          class="rg-submit-button"
+          type="submit"
+          [disabled]="!addRgForm.form.valid"
+      /></span>
+      <span class="span-rg-submit"></span>
+    </fieldset>
+  </form>
+</div>
