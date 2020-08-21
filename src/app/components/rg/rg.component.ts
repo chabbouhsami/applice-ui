@@ -15,7 +15,7 @@ export class RgComponent implements OnInit {
   messageModal: string;
   actionButton: string;
   rg$: Observable<Rg>;
-  rg: Rg = new Rg();
+  rg: Rg = new Rg(0, null);
 
   constructor(
     private rgService: RgService,

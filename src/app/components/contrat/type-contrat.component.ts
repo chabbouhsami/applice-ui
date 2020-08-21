@@ -121,8 +121,8 @@ export class TypeContratComponent implements OnInit {
     this.getContrats();
   }
 
-  clearForm(addBookForm: NgForm): void {
-    addBookForm.form.reset();
+  clearForm(addForm: NgForm): void {
+    addForm.form.reset();
     this.displayMessageModal = false;
   }
 

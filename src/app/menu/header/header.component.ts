@@ -9,6 +9,7 @@ import { LoginService } from 'src/app/core/services/login/login.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() public sidenavToggle = new EventEmitter();
+  title = 'Application CE';
 
   constructor() {}
 

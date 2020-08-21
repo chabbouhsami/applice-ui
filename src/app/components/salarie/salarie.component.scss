@@ -1,4 +1,4 @@
-.div-add-user {
+.div-add-salarie {
   margin-bottom: 2em;
   text-align: left;
   border: 10px solid white;
@@ -18,16 +18,16 @@ span {
   margin-bottom: 1.5em;
 }
 
-.span-add-user-title {
+.span-add-salarie-title {
   font-size: 1.5em;
   font-weight: 1em;
 }
 
-.user-label {
+.salarie-label {
   margin-right: 10em;
 }
 
-.user-input {
+.salarie-input {
   width: 20%;
   height: 2em;
   margin-right: 1em;
@@ -38,7 +38,7 @@ span {
   left: 20em;
 }
 
-.user-select {
+.salarie-select {
   width: 20.5%;
   height: 2.5em;
   margin-right: 1em;
@@ -48,7 +48,7 @@ span {
   left: 20em;
 }
 
-.user-submit-button,
+.salarie-submit-button,
 .clear-form-button {
   margin-right: 1em;
   border-radius: 4px; /* Rounded borders */
@@ -62,7 +62,7 @@ span {
   left: 20em;
 }
 
-.user-submit-button:hover,
+.salarie-submit-button:hover,
 .clear-form-button:hover {
   cursor: pointer;
 }
@@ -90,7 +90,7 @@ mat-datepicker-toggle {
 
 /*-----------------------------------*/
 
-.div-search-user {
+.div-search-salarie {
   text-align: center;
   margin-top: 2em;
   border: 10px solid white;
@@ -134,7 +134,7 @@ mat-datepicker-toggle {
   height: 1.5em;
 }
 
-fieldset-search-user {
+fieldset-search-salarie {
   padding-bottom: 3em;
 }
 
@@ -176,10 +176,10 @@ button:hover {
   cursor: pointer;
 }
 
-.button-update-user {
+.button-update-salarie {
   background: darkcyan;
 }
 
-.button-delete-user {
+.button-delete-salarie {
   background: red;
 }

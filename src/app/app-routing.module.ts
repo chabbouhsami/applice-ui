@@ -7,6 +7,7 @@ import { RgComponent } from './components/rg/rg.component';
 import { UsersComponent } from './components/users/users.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LogginGuard } from './core/services/login/loggin.guard';
+import { SalarieComponent } from './components/salarie/salarie.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'typart',
     component: TypeArticleComponent,
+    canActivate: [LogginGuard],
+  },
+  {
+    path: 'salarie',
+    component: SalarieComponent,
     canActivate: [LogginGuard],
   },
   { path: 'users', component: UsersComponent, canActivate: [LogginGuard] },

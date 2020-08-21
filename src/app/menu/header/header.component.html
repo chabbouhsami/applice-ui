@@ -1,4 +1,8 @@
 <mat-toolbar color="primary">
+  <button mat-button class="site-name" routerLink="/">
+    <mat-icon>home</mat-icon>
+    {{ title }}
+  </button>
   <div fxHide.gt-xs>
     <button mat-icon-button (click)="onToggleSidenav()">
       <mat-icon>menu</mat-icon>

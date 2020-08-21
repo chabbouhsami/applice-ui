@@ -6,7 +6,7 @@
 <div class="div-add-user">
   <form #addUserForm="ngForm" (ngSubmit)="saveOrUpdateUser(addUserForm)">
     <fieldset>
-      <legend></legend>
+      <legend class="titre">{{ "user.titre" | translate }}</legend>
       <span
         ><label for="nom" class="user-label">{{
           "user.firstName" | translate

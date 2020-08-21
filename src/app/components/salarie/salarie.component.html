@@ -1,0 +1,191 @@
+<app-message-modal
+  *ngIf="displayMessageModal"
+  [messageModal]="messageModal"
+></app-message-modal>
+
+<div class="div-add-salarie">
+  <form #addForm="ngForm" (ngSubmit)="saveOrUpdateSalarie(addForm)">
+    <fieldset>
+      <legend class="titre">{{ "salarie.titre" | translate }}</legend>
+      <span
+        ><label for="nom" class="salarie-label">{{
+          "salarie.firstName" | translate
+        }}</label
+        ><input
+          name="nom"
+          class="salarie-input"
+          type="text"
+          required
+          [(ngModel)]="entity.firstName"
+      /></span>
+      <span
+        ><label for="Prenom" class="salarie-label">{{
+          "salarie.lastName" | translate
+        }}</label
+        ><input
+          name="prenom"
+          class="salarie-input"
+          type="text"
+          required
+          [(ngModel)]="entity.lastName"
+      /></span>
+      <span
+        ><label for="Contrat" class="salarie-label">{{
+          "salarie.contrat" | translate
+        }}</label>
+        <select
+          [(ngModel)]="entity.typeContratDTO"
+          name="contrat"
+          required
+          class="salarie-input"
+        >
+          <option *ngFor="let c of contrats$ | async" [value]="c">{{
+            c.libelle
+          }}</option>
+        </select>
+      </span>
+      <span
+        ><label for="Entree" class="salarie-label">{{
+          "salarie.entree" | translate
+        }}</label
+        ><input
+          name="entree"
+          class="salarie-input"
+          [matDatepicker]="entree"
+          required
+          [(ngModel)]="entity.dateEntree"
+          placeholder="DD/MM/YYYY"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="entree"
+          placeholder="dd/MM/yyyy"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #entree></mat-datepicker>
+      </span>
+      <span
+        ><label for="Sortie" class="salarie-label">{{
+          "salarie.sortie" | translate
+        }}</label
+        ><input
+          name="sortie"
+          class="salarie-input"
+          [matDatepicker]="sortie"
+          required
+          [(ngModel)]="entity.dateSortie"
+          placeholder="DD/MM/YYYY"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="sortie"
+          placeholder="mm/MM/yyyy"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #sortie></mat-datepicker>
+      </span>
+      <span
+        ><label for="Sexe" class="salarie-label">{{
+          "salarie.sexe" | translate
+        }}</label>
+        <select
+          [(ngModel)]="entity.sexe"
+          name="sexe"
+          required
+          class="salarie-input"
+        >
+          <option *ngFor="let c of sexes" [ngValue]="c.id">{{
+            c.value
+          }}</option>
+        </select>
+      </span>
+
+      <span
+        ><label for="Plafond" class="salarie-label">{{
+          "salarie.plafond" | translate
+        }}</label
+        ><input
+          name="actif"
+          class="salarie-input"
+          type="checkbox"
+          checked
+          [(ngModel)]="entity.plafond"
+      /></span>
+
+      <span
+        ><label for="Actif" class="salarie-label">{{
+          "salarie.actif" | translate
+        }}</label
+        ><input
+          name="actif"
+          class="salarie-input"
+          type="checkbox"
+          checked
+          [(ngModel)]="entity.actif"
+      /></span>
+
+      <span
+        ><input
+          [value]="actionButton"
+          class="salarie-submit-button"
+          type="submit"
+          [disabled]="!addForm.form.valid"
+      /></span>
+      <span class="span-salarie-submit"></span>
+
+      <span class="span-salarie-submit"></span>
+      <button class="clear-form-button" (click)="clearForm(addForm)">
+        {{ "button.clear" | translate }}
+      </button>
+    </fieldset>
+  </form>
+</div>
+<div class="div-search-salarie">
+  <fieldset class="fieldset-search-salarie">
+    <ng-container>
+      <table>
+        <tr>
+          <td>{{ "salarie.lastName" | translate }}</td>
+          <td>{{ "salarie.firstName" | translate }}</td>
+          <td>{{ "salarie.contrat" | translate }}</td>
+          <td>{{ "salarie.entree" | translate }}</td>
+          <td>{{ "salarie.sortie" | translate }}</td>
+          <td>{{ "salarie.sexe" | translate }}</td>
+          <td>{{ "salarie.plafond" | translate }}</td>
+          <td>{{ "salarie.actif" | translate }}</td>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr class="salarie.id" *ngFor="let salarie of entities$ | async">
+          <td>{{ salarie.lastName }}</td>
+          <td>{{ salarie.firstName }}</td>
+          <td>{{ salarie.typeContratDTO.libelle }}</td>
+          <td>{{ salarie.dateEntree | date: "dd/MM/yyyy" }}</td>
+          <td>{{ salarie.dateSortie | date: "dd/MM/yyyy" }}</td>
+          <td>{{ salarie.sexe }}</td>
+          <td>{{ salarie.plafond }}</td>
+          <td>{{ salarie.actif }}</td>
+          <td>
+            <button
+              value="Update"
+              type="submit"
+              class="button-update-salarie"
+              (click)="setUpdateSalarie(salarie)"
+            >
+              {{ updateLabel }}
+            </button>
+          </td>
+          <td>
+            <button
+              value="Delete"
+              type="submit"
+              class="button-delete-salarie"
+              (click)="deleteSalarie(salarie)"
+            >
+              {{ deleteLabel }}
+            </button>
+          </td>
+        </tr>
+      </table>
+    </ng-container>
+  </fieldset>
+</div>
+<!--app-back-to-menu></app-back-to-menu-->

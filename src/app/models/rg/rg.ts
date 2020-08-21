@@ -1,4 +1,3 @@
 export class Rg {
-  ageEnfant: number;
-  dateAnciennete: Date;
+  constructor(public ageEnfant: number, public dateAnciennete: Date) {}
 }

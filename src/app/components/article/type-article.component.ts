@@ -124,8 +124,8 @@ export class TypeArticleComponent implements OnInit {
     this.getArticles();
   }
 
-  clearForm(addBookForm: NgForm): void {
-    addBookForm.form.reset();
+  clearForm(addForm: NgForm): void {
+    addForm.form.reset();
     this.displayMessageModal = false;
   }
 

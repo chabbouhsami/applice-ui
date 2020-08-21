@@ -15,7 +15,7 @@ export class TypeContratService {
       'mon-entete-personnalise': 'maValeur',
     }),
   };
-  baseUrl = environment.apiUrl + 'typeContrat/';
+  baseUrl = environment.apiUrl + 'contrat/';
 
   constructor(private http: HttpClient) {}
 

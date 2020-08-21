@@ -117,8 +117,8 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
-  clearForm(addBookForm: NgForm): void {
-    addBookForm.form.reset();
+  clearForm(addForm: NgForm): void {
+    addForm.form.reset();
     this.displayMessageModal = false;
   }
 

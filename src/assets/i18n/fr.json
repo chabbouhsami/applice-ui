@@ -1,11 +1,25 @@
 {
   "user": {
+    "titre": "Gestion des utilisateurs",
     "lastName": "Nom",
     "firstName": "Prénom",
     "email": "E-Mail",
     "password": "Mot de passe",
     "droit": "Droit associé",
     "force": "Forcer vente ?",
+    "actif": "Actif ?"
+  },
+  "salarie": {
+    "titre": "Gestion des salariés",
+    "lastName": "Nom",
+    "firstName": "Prénom",
+    "contrat": "Type de contrat",
+    "entree": "Date d'entrée",
+    "sortie": "Date de sortie",
+    "force": "Forcer vente ?",
+    "enfants": "Nombre d'enfants de moins de {rg}",
+    "plafond": "Plafond ?",
+    "sexe": "Sexe",
     "actif": "Actif ?"
   },
   "button": {
@@ -20,12 +34,13 @@
     "titre": "Renseignements généraux"
   },
   "typeContrat": {
+    "titre": "Gestion des types de contrats",
     "libelle": "Libellé",
     "droit": "Droit achat ?",
     "actif": "Actif ?"
   },
   "typeArticle": {
-    "titre": "Type d'articles",
+    "titre": "Gestion des type d'articles",
     "libelle": "Libellé",
     "quantiteMois": "Quantité / mois",
     "quantiteAn": "Quantité / An",
@@ -33,8 +48,8 @@
     "actif": "Actif ?",
     "montantMois": "Montant / mois",
     "montantAn": "Montant / an",
-    "anciennete": "Ancienneté requise",
-    "moisInterditVente": "Mois interdits à la vente "
+    "anciennete": "Ancienneté requise (mois)",
+    "moisInterditVente": "Mois interdit(s) "
   },
   "login": {
     "titre": "Identification",
@@ -73,7 +88,7 @@
         },
         { "titre": "Salariés", "route": "salarie" },
         { "titre": "Type d'articles", "route": "typart" },
-        { "titre": "Types de contrat", "route": "typecon" },
+        { "titre": "Types de contrat", "route": "typcon" },
         { "titre": "Utilisateurs", "route": "users" }
       ]
     },

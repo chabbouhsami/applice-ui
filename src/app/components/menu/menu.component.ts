@@ -1,9 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { StateService } from 'src/app/core/service/state.service';
-import { Menu } from 'src/app/shared/menu/menu';
+import { AppStorageService } from 'src/app/core/service/app-storage.service';
 import { LoginService } from 'src/app/core/services/login/login.service';
+import { Menu } from 'src/app/shared/menu/menu';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -12,36 +14,33 @@ import { LoginService } from 'src/app/core/services/login/login.service';
 export class MenuComponent implements OnInit {
   title = 'Application CE';
   menu = new Array<Menu>();
+  access$: Promise<any>;
   droit: any;
   constructor(
     private translate: TranslateService,
     private route: Router,
-    private appState: StateService,
-    private loginService: LoginService
-  ) {
-    appState.event.subscribe((data) => {
-      this.droit = data;
-    });
-  }
-
-  hasAccess(item: Menu): boolean {
-    if (this.droit === item.acces) {
-      return true;
-    }
-    return this.droit === 'A';
-  }
-
-  isUserConnected(): boolean {
-    console.log(sessionStorage.getItem('user'));
-    const user = sessionStorage.getItem('user');
-    return !(user === null);
-  }
+    private loginService: LoginService,
+    private storage: AppStorageService
+  ) {}
 
   ngOnInit(): void {
     this.getMenuItem('menu.vente');
     this.getMenuItem('menu.administration');
     this.getMenuItem('menu.edition');
     this.getMenuItem('menu.traitement');
+  }
+
+  hasAccess(item: Menu): boolean {
+    this.droit = this.storage.getData('user');
+    if (this.droit === JSON.stringify(item.acces)) {
+      return true;
+    }
+    return this.droit === JSON.stringify('A'.toString());
+  }
+
+  isUserConnected(): boolean {
+    const user = this.storage.getData('user');
+    return !(user === null);
   }
 
   getMenuItem(translateLabel: string): Array<Menu> {
