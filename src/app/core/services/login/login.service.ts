@@ -3,7 +3,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user/user';
-import { AppStorageService } from '../../service/app-storage.service';
+import { AppStorageService } from '../storage/app-storage.service';
 
 @Injectable({
   providedIn: 'root',

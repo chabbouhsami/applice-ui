@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { TypeArticle } from 'src/app/models/article/type-article';
+import { Article } from 'src/app/models/article/article';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TypeArticleService {
+export class ArticleService {
   optionRequete = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -15,34 +15,30 @@ export class TypeArticleService {
       'mon-entete-personnalise': 'maValeur',
     }),
   };
-  baseUrl = environment.apiUrl + 'article/type/';
+  baseUrl = environment.apiUrl + 'article/';
 
   constructor(private http: HttpClient) {}
 
-  loadArticles(): Observable<TypeArticle[]> {
-    return this.http.get<TypeArticle[]>(
+  loadAll(): Observable<Article[]> {
+    return this.http.get<Article[]>(
       this.baseUrl + 'searchAll',
       this.optionRequete
     );
   }
 
-  saveArticle(entity: TypeArticle): Observable<TypeArticle> {
-    return this.http.post<TypeArticle>(
-      this.baseUrl,
-      entity,
+  loadStockable(): Observable<Article[]> {
+    return this.http.get<Article[]>(
+      this.baseUrl + 'getStockable',
       this.optionRequete
     );
   }
 
-  deleteArticle(entity: TypeArticle): Observable<TypeArticle> {
-    return this.http.delete<TypeArticle>(
-      this.baseUrl + entity.code,
-      this.optionRequete
-    );
+  saveArticle(entity: Article): Observable<Article> {
+    return this.http.post<Article>(this.baseUrl, entity, this.optionRequete);
   }
 
-  updateArticle(entity: TypeArticle): Observable<TypeArticle> {
-    return this.http.patch<TypeArticle>(
+  updateArticle(entity: Article): Observable<Article> {
+    return this.http.patch<Article>(
       this.baseUrl + entity.code,
       entity,
       this.optionRequete

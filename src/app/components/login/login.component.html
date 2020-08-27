@@ -1,7 +1,7 @@
 <div class="div-add-rg">
   <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
     <fieldset>
-      <legend>{{ "login.titre" | translate }}</legend>
+      <legend class="titre">{{ "login.titre" | translate }}</legend>
       <span
         class="form-group"
         [ngClass]="{ 'has-error': f.submitted && !email.valid }"

@@ -19,7 +19,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  loadUsers(): Observable<User[]> {
+  loadAll(): Observable<User[]> {
     return this.http.get<User[]>(
       this.baseUrl + 'searchAll',
       this.optionRequete
@@ -36,10 +36,6 @@ export class UsersService {
 
   saveUser(user: User): Observable<User> {
     return this.http.post<User>(this.baseUrl, user, this.optionRequete);
-  }
-
-  deleteUser(user: User): Observable<User> {
-    return this.http.delete<User>(this.baseUrl + user.code, this.optionRequete);
   }
 
   updateUser(user: User): Observable<User> {

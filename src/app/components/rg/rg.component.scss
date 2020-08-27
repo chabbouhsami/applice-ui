@@ -8,6 +8,22 @@
   background-color: white;
 }
 
+.titre {
+  font-size: 105%;
+  padding: 0.5%;
+  margin-bottom: 1%;
+  background-image: linear-gradient(
+    to top,
+    #3f51b5 0%,
+    #a2b6df 100%,
+    #6b8cce 100%,
+    #a2b6df 100%
+  );
+  opacity: 0.8;
+  border-radius: 4px;
+  color: white;
+}
+
 span {
   display: block;
   margin-bottom: 1.5em;
@@ -180,8 +196,4 @@ button:hover {
 
 .button-update-rg {
   background: darkcyan;
-}
-
-.button-delete-rg {
-  background: red;
 }

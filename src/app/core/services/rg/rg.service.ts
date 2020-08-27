@@ -26,11 +26,4 @@ export class RgService {
   saveOrUpdateRg(rg: Rg): Observable<Rg> {
     return this.http.post<Rg>(this.baseUrl, rg, this.optionRequete);
   }
-
-  deleteRg(rg: Rg): Observable<Rg> {
-    return this.http.delete<Rg>(
-      this.baseUrl + rg.ageEnfant,
-      this.optionRequete
-    );
-  }
 }

@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { TypeContrat } from 'src/app/models/contrat/type-contrat';
+import { TypeArticle } from 'src/app/models/article/type-article';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TypeContratService {
+export class TypeArticleService {
   optionRequete = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -15,25 +15,29 @@ export class TypeContratService {
       'mon-entete-personnalise': 'maValeur',
     }),
   };
-  baseUrl = environment.apiUrl + 'contrat/';
+  baseUrl = environment.apiUrl + 'article/type/';
 
   constructor(private http: HttpClient) {}
 
-  loadAll(): Observable<TypeContrat[]> {
-    return this.http.get<TypeContrat[]>(
+  loadAll(): Observable<TypeArticle[]> {
+    return this.http.get<TypeArticle[]>(
       this.baseUrl + 'searchAll',
       this.optionRequete
     );
   }
 
-  saveContrat(user: TypeContrat): Observable<TypeContrat> {
-    return this.http.post<TypeContrat>(this.baseUrl, user, this.optionRequete);
+  saveArticle(entity: TypeArticle): Observable<TypeArticle> {
+    return this.http.post<TypeArticle>(
+      this.baseUrl,
+      entity,
+      this.optionRequete
+    );
   }
 
-  updateContrat(user: TypeContrat): Observable<TypeContrat> {
-    return this.http.patch<TypeContrat>(
-      this.baseUrl + user.code,
-      user,
+  updateArticle(entity: TypeArticle): Observable<TypeArticle> {
+    return this.http.patch<TypeArticle>(
+      this.baseUrl + entity.code,
+      entity,
       this.optionRequete
     );
   }

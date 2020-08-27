@@ -39,7 +39,7 @@
           required
           class="salarie-input"
         >
-          <option *ngFor="let c of contrats$ | async" [value]="c">{{
+          <option *ngFor="let c of contrats$ | async" [ngValue]="c">{{
             c.libelle
           }}</option>
         </select>
@@ -71,7 +71,6 @@
           name="sortie"
           class="salarie-input"
           [matDatepicker]="sortie"
-          required
           [(ngModel)]="entity.dateSortie"
           placeholder="DD/MM/YYYY"
         />
@@ -171,16 +170,6 @@
               (click)="setUpdateSalarie(salarie)"
             >
               {{ updateLabel }}
-            </button>
-          </td>
-          <td>
-            <button
-              value="Delete"
-              type="submit"
-              class="button-delete-salarie"
-              (click)="deleteSalarie(salarie)"
-            >
-              {{ deleteLabel }}
             </button>
           </td>
         </tr>

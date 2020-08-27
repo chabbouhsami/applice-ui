@@ -1,4 +1,4 @@
-.div-add-typeArticle {
+.div-add {
   margin-bottom: 2em;
   text-align: left;
   border: 10px solid white;
@@ -8,21 +8,37 @@
   background-color: white;
 }
 
+.titre {
+  font-size: 105%;
+  padding: 0.5%;
+  margin-bottom: 1%;
+  background-image: linear-gradient(
+    to top,
+    #3f51b5 0%,
+    #a2b6df 100%,
+    #6b8cce 100%,
+    #a2b6df 100%
+  );
+  opacity: 0.8;
+  border-radius: 4px;
+  color: white;
+}
+
 span {
   display: block;
   margin-bottom: 1.5em;
 }
 
-.span-add-typeArticle-title {
+.span-add-title {
   font-size: 1.5em;
   font-weight: 1em;
 }
 
-.typeArticle-label {
+.label {
   margin-right: 10em;
 }
 
-.typeArticle-input {
+.input {
   width: 20%;
   height: 2em;
   margin-right: 1em;
@@ -33,7 +49,7 @@ span {
   left: 20em;
 }
 
-.typeArticle-select {
+.select {
   width: 20.5%;
   height: 2.5em;
   margin-right: 1em;
@@ -43,7 +59,7 @@ span {
   left: 20em;
 }
 
-.typeArticle-submit-button,
+.submit-button,
 .clear-form-button {
   margin-right: 1em;
   border-radius: 4px; /* Rounded borders */
@@ -57,7 +73,7 @@ span {
   left: 20em;
 }
 
-.typeArticle-submit-button:hover,
+.submit-button:hover,
 .clear-form-button:hover {
   cursor: pointer;
 }
@@ -85,7 +101,7 @@ mat-datepicker-toggle {
 
 /*-----------------------------------*/
 
-.div-search-typeArticle {
+.div-search {
   text-align: center;
   margin-top: 2em;
   border: 10px solid white;
@@ -129,7 +145,7 @@ mat-datepicker-toggle {
   height: 1.5em;
 }
 
-fieldset-search-typeArticle {
+fieldset-search {
   padding-bottom: 3em;
 }
 
@@ -171,10 +187,6 @@ button:hover {
   cursor: pointer;
 }
 
-.button-update-typeArticle {
+.button-update {
   background: darkcyan;
-}
-
-.button-delete-typeArticle {
-  background: red;
 }

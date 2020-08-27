@@ -9,7 +9,7 @@
     (ngSubmit)="saveOrUpdateContrat(addContratForm)"
   >
     <fieldset>
-      <legend></legend>
+      <legend class="titre"></legend>
       <span
         ><label for="nom" class="typeContrat-label">{{
           "typeContrat.libelle" | translate
@@ -85,16 +85,6 @@
               (click)="setUpdateContrat(typeContrat)"
             >
               {{ updateLabel }}
-            </button>
-          </td>
-          <td>
-            <button
-              value="Delete"
-              type="submit"
-              class="button-delete-typeContrat"
-              (click)="deleteContrat(typeContrat)"
-            >
-              {{ deleteLabel }}
             </button>
           </td>
         </tr>

@@ -9,7 +9,7 @@
     (ngSubmit)="saveOrUpdateArticle(addArticleForm)"
   >
     <fieldset>
-      <legend>{{ "typeArticle.titre" | translate }}</legend>
+      <legend class="titre">{{ "typeArticle.titre" | translate }}</legend>
       <span
         ><label for="nom" class="typeArticle-label">{{
           "typeArticle.libelle" | translate
@@ -164,16 +164,6 @@
               (click)="setUpdateArticle(typeArticle)"
             >
               {{ updateLabel }}
-            </button>
-          </td>
-          <td>
-            <button
-              value="Delete"
-              type="submit"
-              class="button-delete-typeArticle"
-              (click)="deleteArticle(typeArticle)"
-            >
-              {{ deleteLabel }}
             </button>
           </td>
         </tr>

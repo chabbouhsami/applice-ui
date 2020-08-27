@@ -23,7 +23,6 @@ export class UsersComponent implements OnInit {
   titleSaveOrUpdate: string;
   saveLabel: string;
   updateLabel: string;
-  deleteLabel: string;
 
   constructor(
     private userService: UsersService,
@@ -40,10 +39,6 @@ export class UsersComponent implements OnInit {
 
     this.translate.get('button.update').subscribe((translation) => {
       this.updateLabel = translation;
-    });
-
-    this.translate.get('button.delete').subscribe((translation) => {
-      this.deleteLabel = translation;
     });
   }
 
@@ -77,7 +72,7 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.users = this.userService.loadUsers();
+    this.users = this.userService.loadAll();
   }
 
   setUpdateUser(user: User): void {
@@ -99,22 +94,6 @@ export class UsersComponent implements OnInit {
         this.buildMessageModal('An error occurs when saving the user data');
       }
     );
-  }
-
-  deleteUser(user: User): void {
-    this.userService.deleteUser(user).subscribe(
-      (result: User) => {
-        if (result.code) {
-          this.getUsers();
-          this.buildMessageModal('Delete operation correctly done');
-          this.displayMessageModal = true;
-        }
-      },
-      (error) => {
-        this.buildMessageModal('An error occurs when saving the user data');
-      }
-    );
-    this.getUsers();
   }
 
   clearForm(addForm: NgForm): void {

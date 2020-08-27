@@ -14,7 +14,7 @@ import { SalarieAdapter } from 'src/app/core/services/adapter/salarie/salarie.ad
   styleUrls: ['./salarie.component.scss'],
 })
 export class SalarieComponent implements OnInit {
-  entities$: Promise<Salarie[]>;
+  entities$: Observable<Salarie[]>;
   entity: Salarie = this.adapter.adapt(this.getEmptySalarie());
 
   contrats$: Observable<TypeContrat[]>;
@@ -28,7 +28,6 @@ export class SalarieComponent implements OnInit {
   titleSaveOrUpdate: string;
   saveLabel: string;
   updateLabel: string;
-  deleteLabel: string;
 
   constructor(
     private entityService: SalarieService,
@@ -49,10 +48,6 @@ export class SalarieComponent implements OnInit {
     this.translate.get('button.update').subscribe((translation) => {
       this.updateLabel = translation;
     });
-
-    this.translate.get('button.delete').subscribe((translation) => {
-      this.deleteLabel = translation;
-    });
   }
 
   async saveOrUpdateSalarie(addSalarieForm: NgForm): Promise<void> {
@@ -68,6 +63,7 @@ export class SalarieComponent implements OnInit {
     this.displayMessageModal = true;
     this.entity = this.adapter.adapt(this.getEmptySalarie());
     this.actionButton = this.saveLabel;
+    addSalarieForm.reset();
     this.getSalaries();
   }
 
@@ -85,11 +81,11 @@ export class SalarieComponent implements OnInit {
   }
 
   getSalaries(): void {
-    this.entities$ = this.entityService.loadSalaries();
+    this.entities$ = this.entityService.getAll();
   }
 
   getContrats(): void {
-    this.contrats$ = this.contratService.loadContrats();
+    this.contrats$ = this.contratService.loadAll();
   }
 
   setUpdateSalarie(entity: Salarie): void {
@@ -111,22 +107,6 @@ export class SalarieComponent implements OnInit {
         this.buildMessageModal('An error occurs when saving the entity data');
       }
     );
-  }
-
-  deleteSalarie(entity: Salarie): void {
-    this.entityService.deleteSalarie(entity).subscribe(
-      (result: Salarie) => {
-        if (result.code) {
-          this.getSalaries();
-          this.buildMessageModal('Delete operation correctly done');
-          this.displayMessageModal = true;
-        }
-      },
-      (error) => {
-        this.buildMessageModal('An error occurs when saving the entity data');
-      }
-    );
-    this.getSalaries();
   }
 
   getEmptySalarie(): Salarie {

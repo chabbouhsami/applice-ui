@@ -14,8 +14,7 @@ export class RgComponent implements OnInit {
   displayMessageModal: boolean;
   messageModal: string;
   actionButton: string;
-  rg$: Observable<Rg>;
-  rg: Rg = new Rg(0, null);
+  rg: Rg = new Rg(0, new Date(0));
 
   constructor(
     private rgService: RgService,
@@ -23,10 +22,10 @@ export class RgComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getRg().subscribe((rg) => {
+    this.rgService.getRg().subscribe((rg) => {
+      console.log(rg);
       this.rg = rg;
     });
-    this.rg$ = this.getRg();
     this.translate.get('button.save').subscribe((translation) => {
       this.actionButton = translation;
     });
@@ -40,10 +39,6 @@ export class RgComponent implements OnInit {
 
     this.saveOrUpdate(this.rg);
     this.displayMessageModal = true;
-  }
-
-  getRg(): Observable<Rg> {
-    return this.rgService.getRg();
   }
 
   saveOrUpdate(user: Rg): void {

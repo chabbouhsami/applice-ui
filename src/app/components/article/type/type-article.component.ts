@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
-import { TypeArticleService } from 'src/app/core/services/article/type-article.service';
+import { TypeArticleService } from 'src/app/core/services/article/type/type-article.service';
 import { TypeArticle } from 'src/app/models/article/type-article';
 
 @Component({
@@ -23,7 +23,6 @@ export class TypeArticleComponent implements OnInit {
   titleSaveOrUpdate: string;
   saveLabel: string;
   updateLabel: string;
-  deleteLabel: string;
 
   constructor(
     private articleService: TypeArticleService,
@@ -40,10 +39,6 @@ export class TypeArticleComponent implements OnInit {
 
     this.translate.get('button.update').subscribe((translation) => {
       this.updateLabel = translation;
-    });
-
-    this.translate.get('button.delete').subscribe((translation) => {
-      this.deleteLabel = translation;
     });
   }
 
@@ -80,7 +75,7 @@ export class TypeArticleComponent implements OnInit {
   }
 
   getArticles(): void {
-    this.articles$ = this.articleService.loadArticles();
+    this.articles$ = this.articleService.loadAll();
   }
 
   setUpdateArticle(typeArticle: TypeArticle): void {
@@ -104,24 +99,6 @@ export class TypeArticleComponent implements OnInit {
         );
       }
     );
-  }
-
-  deleteArticle(typeArticle: TypeArticle): void {
-    this.articleService.deleteArticle(typeArticle).subscribe(
-      (result: TypeArticle) => {
-        if (result.code) {
-          this.getArticles();
-          this.buildMessageModal('Delete operation correctly done');
-          this.displayMessageModal = true;
-        }
-      },
-      (error) => {
-        this.buildMessageModal(
-          'An error occurs when saving the typeArticle data'
-        );
-      }
-    );
-    this.getArticles();
   }
 
   clearForm(addForm: NgForm): void {

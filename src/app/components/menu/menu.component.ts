@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { AppStorageService } from 'src/app/core/service/app-storage.service';
+import { AppStorageService } from 'src/app/core/services/storage/app-storage.service';
 import { LoginService } from 'src/app/core/services/login/login.service';
 import { Menu } from 'src/app/shared/menu/menu';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user/user';
 
 @Component({
   selector: 'app-menu',
@@ -31,16 +32,16 @@ export class MenuComponent implements OnInit {
   }
 
   hasAccess(item: Menu): boolean {
-    this.droit = this.storage.getData('user');
-    if (this.droit === JSON.stringify(item.acces)) {
+    const user: User = JSON.parse(this.storage.getData('user'));
+    this.droit = user.right;
+    if (this.droit === item.acces) {
       return true;
     }
-    return this.droit === JSON.stringify('A'.toString());
+    return this.droit === 'A'.toString();
   }
 
   isUserConnected(): boolean {
-    const user = this.storage.getData('user');
-    return !(user === null);
+    return this.loginService.isUserLoggedIn();
   }
 
   getMenuItem(translateLabel: string): Array<Menu> {

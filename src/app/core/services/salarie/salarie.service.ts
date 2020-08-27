@@ -9,7 +9,7 @@ import { SalarieAdapter } from 'src/app/core/services/adapter/salarie/salarie.ad
 @Injectable({
   providedIn: 'root',
 })
-export class SalarieService implements OnDestroy {
+export class SalarieService {
   optionRequete = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
@@ -21,9 +21,7 @@ export class SalarieService implements OnDestroy {
 
   constructor(private http: HttpClient, private adapter: SalarieAdapter) {}
 
-  ngOnDestroy(): void {}
-
-  loadSalaries(): Promise<Salarie[]> {
+  loadAll(): Promise<Salarie[]> {
     return this.http
       .get<Salarie[]>(this.baseUrl + 'searchAll', this.optionRequete)
       .pipe(
@@ -35,15 +33,15 @@ export class SalarieService implements OnDestroy {
       .toPromise();
   }
 
-  saveSalarie(entity: Salarie): Observable<Salarie> {
-    return this.http.post<Salarie>(this.baseUrl, entity, this.optionRequete);
-  }
-
-  deleteSalarie(entity: Salarie): Observable<Salarie> {
-    return this.http.delete<Salarie>(
-      this.baseUrl + entity.code,
+  getAll(): Observable<Salarie[]> {
+    return this.http.get<Salarie[]>(
+      this.baseUrl + 'searchAll',
       this.optionRequete
     );
+  }
+
+  saveSalarie(entity: Salarie): Observable<Salarie> {
+    return this.http.post<Salarie>(this.baseUrl, entity, this.optionRequete);
   }
 
   updateSalarie(entity: Salarie): Observable<Salarie> {

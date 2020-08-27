@@ -7,7 +7,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TypeArticleComponent } from './components/article/type-article.component';
+import { TypeArticleComponent } from './components/article/type/type-article.component';
 import { TypeContratComponent } from './components/contrat/type-contrat.component';
 import { LoginComponent } from './components/login/login.component';
 import { MenuItemComponent } from './components/menu/menu-item/menu-item.component';
@@ -21,6 +21,8 @@ import { SidenavListComponent } from './menu/sidenav-list/sidenav-list.component
 import { MaterialModule } from './shared/material/material.module';
 import { SharedModule } from './shared/shared.module';
 import { WebStorageModule } from 'ngx-store';
+import { ArticleComponent } from './components/article/article/article.component';
+import { ApprovisionnementComponent } from './components/approvisionnement/approvisionnement/approvisionnement.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { WebStorageModule } from 'ngx-store';
     PageNotFoundComponent,
     LoginComponent,
     SalarieComponent,
+    ArticleComponent,
+    ApprovisionnementComponent,
   ],
   imports: [
     BrowserModule,

@@ -25,8 +25,7 @@
   "button": {
     "save": "Sauvegarder",
     "clear": "Effacer",
-    "update": "Mettre à jour",
-    "delete": "Supprimer"
+    "update": "Mettre à jour"
   },
   "rg": {
     "ageEnfant": "Age enfant min.",
@@ -50,6 +49,28 @@
     "montantAn": "Montant / an",
     "anciennete": "Ancienneté requise (mois)",
     "moisInterditVente": "Mois interdit(s) "
+  },
+  "article": {
+    "titre": "Gestion des articles",
+    "type": "Type d'article",
+    "libelle": "Libellé",
+    "prixInfPlafond": "Prix de vente < SS",
+    "prixSupPlafond": "Prix de vente >= SS",
+    "subventionInfPlafond": "Subvention CE < SS",
+    "subventionSupPlafond": "Subvention >= SS ",
+    "enfant": "Article enfants ?",
+    "quantiteAlerte": "Quantité alerte ?",
+    "prix": "Prix",
+    "actif": "Actif ?"
+  },
+  "approvisionnement": {
+    "titre": "Approvisionnement",
+    "article": "Article à approvisionner",
+    "stock": "Stock en cours",
+    "type": "Type",
+    "quantite": "Quantité > 0",
+    "montant": "Montant > 0",
+    "commentaire": "Commentaire"
   },
   "login": {
     "titre": "Identification",
@@ -79,7 +100,7 @@
       "children": [
         {
           "titre": "Approvisionnement",
-          "route": "approvisonnement"
+          "route": "approvisionnement"
         },
         { "titre": "Articles", "route": "articles" },
         {

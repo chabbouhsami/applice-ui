@@ -2,33 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
-
-import { TypeContratService } from '../../core/services/contrat/type-contrat.service';
-import { TypeContrat } from 'src/app/models/contrat/type-contrat';
+import { Article } from 'src/app/models/article/article';
+import { ArticleService } from 'src/app/core/services/article/article.service';
+import { TypeArticle } from 'src/app/models/article/type-article';
+import { TypeArticleService } from 'src/app/core/services/article/type/type-article.service';
 
 @Component({
-  selector: 'app-type-contrat',
-  templateUrl: './type-contrat.component.html',
-  styleUrls: ['./type-contrat.component.scss'],
+  selector: 'app-article',
+  templateUrl: './article.component.html',
+  styleUrls: ['./article.component.scss'],
 })
-export class TypeContratComponent implements OnInit {
-  contrats: Observable<TypeContrat[]>;
-  typeContrat: TypeContrat;
+export class ArticleComponent implements OnInit {
+  articles$: Observable<Article[]>;
+  types$: Observable<TypeArticle[]>;
+  article: Article;
   displayMessageModal: boolean;
   messageModal: string;
   actionButton: string;
+
   titleSaveOrUpdate: string;
   saveLabel: string;
   updateLabel: string;
 
   constructor(
-    private service: TypeContratService,
+    private articleService: ArticleService,
+    private typeArticleService: TypeArticleService,
     private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
-    this.typeContrat = new TypeContrat();
-    this.getContrats();
+    this.article = new Article();
+    this.getArticles();
     this.translate.get('button.save').subscribe((translation) => {
       this.saveLabel = translation;
       this.actionButton = translation;
@@ -39,61 +43,59 @@ export class TypeContratComponent implements OnInit {
     });
   }
 
-  async saveOrUpdateContrat(addContratForm: NgForm): Promise<void> {
+  async saveOrUpdateArticle(addArticleForm: NgForm): Promise<void> {
     this.displayMessageModal = false;
-    if (!addContratForm.valid) {
+    if (!addArticleForm.valid) {
       this.buildMessageModal('Error in the form');
     }
+    debugger;
     if (this.actionButton === this.saveLabel) {
-      this.saveNewContrat(this.typeContrat);
+      this.saveNewArticle(this.article);
     } else if (this.actionButton === this.updateLabel) {
-      this.updateContrat(this.typeContrat);
+      this.updateArticle(this.article);
     }
     this.displayMessageModal = true;
-    this.typeContrat = Object.assign({}, new TypeContrat());
+    this.article = Object.assign({}, new Article());
     this.actionButton = this.saveLabel;
-    addContratForm.reset();
-    this.getContrats();
+    addArticleForm.reset();
+    this.getArticles();
   }
 
-  saveNewContrat(typeContrat: TypeContrat): void {
-    this.service.saveContrat(typeContrat).subscribe(
-      (result: TypeContrat) => {
+  saveNewArticle(article: Article): void {
+    this.articleService.saveArticle(article).subscribe(
+      (result: Article) => {
         if (result.code) {
           this.buildMessageModal('Save operation correctly done');
         }
       },
       (error) => {
-        this.buildMessageModal(
-          'An error occurs when saving the typeContrat data'
-        );
+        this.buildMessageModal('An error occurs when saving the article data');
       }
     );
   }
 
-  getContrats(): void {
-    this.contrats = this.service.loadAll();
+  getArticles(): void {
+    this.articles$ = this.articleService.loadAll();
+    this.types$ = this.typeArticleService.loadAll();
   }
 
-  setUpdateContrat(typeContrat: TypeContrat): void {
+  setUpdateArticle(article: Article): void {
     this.titleSaveOrUpdate = 'Update Book Form';
     this.actionButton = this.updateLabel;
-    this.typeContrat = Object.assign({}, typeContrat);
+    this.article = Object.assign({}, article);
     this.displayMessageModal = false;
   }
 
-  updateContrat(typeContrat: TypeContrat): void {
-    this.service.updateContrat(typeContrat).subscribe(
-      (result: TypeContrat) => {
+  updateArticle(article: Article): void {
+    this.articleService.updateArticle(article).subscribe(
+      (result: Article) => {
         if (result.code) {
           this.buildMessageModal('Update operation correctly done');
           this.displayMessageModal = true;
         }
       },
       (error) => {
-        this.buildMessageModal(
-          'An error occurs when saving the typeContrat data'
-        );
+        this.buildMessageModal('An error occurs when saving the article data');
       }
     );
   }

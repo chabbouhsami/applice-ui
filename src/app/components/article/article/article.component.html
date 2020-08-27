@@ -1,0 +1,168 @@
+<app-message-modal
+  *ngIf="displayMessageModal"
+  [messageModal]="messageModal"
+></app-message-modal>
+
+<div class="div-add">
+  <form
+    #addArticleForm="ngForm"
+    (ngSubmit)="saveOrUpdateArticle(addArticleForm)"
+  >
+    <fieldset>
+      <legend class="titre">{{ "article.titre" | translate }}</legend>
+      <span
+        ><label for="type" class="salarie-label">{{
+          "article.type" | translate
+        }}</label>
+        <select [(ngModel)]="article.type" name="type" required class="input">
+          <option *ngFor="let c of types$ | async" [ngValue]="c">{{
+            c.libelle
+          }}</option>
+        </select>
+      </span>
+
+      <span
+        ><label for="nom" class="label">{{
+          "article.libelle" | translate
+        }}</label
+        ><input
+          name="nom"
+          class="input"
+          type="text"
+          required
+          [(ngModel)]="article.libelle"
+      /></span>
+      <span
+        ><label for="prixInfSS" class="label">{{
+          "article.prixInfPlafond" | translate
+        }}</label
+        ><input
+          name="prixinfss"
+          class="input"
+          type="text"
+          required
+          [(ngModel)]="article.prixInfPlafond" /></span
+      ><span
+        ><label for="prixSupSS" class="label">{{
+          "article.prixSupPlafond" | translate
+        }}</label
+        ><input
+          name="prixsupss"
+          class="input"
+          type="text"
+          required
+          [(ngModel)]="article.prixSupPlafond"
+      /></span>
+      <span
+        ><label for="subventionInfSS" class="label">{{
+          "article.subventionInfPlafond" | translate
+        }}</label
+        ><input
+          name="subventionInfSS"
+          class="input"
+          type="text"
+          required
+          [(ngModel)]="article.subventionInfPlafond" /></span
+      ><span
+        ><label for="subventionSupSS" class="label">{{
+          "article.subventionSupPlafond" | translate
+        }}</label
+        ><input
+          name="subventionSupSS"
+          class="input"
+          type="text"
+          required
+          [(ngModel)]="article.subventionSupPlafond"
+      /></span>
+      <span
+        ><label for="enfant" class="label">{{
+          "article.enfant" | translate
+        }}</label
+        ><input
+          name="enfant"
+          class="input"
+          type="checkbox"
+          [(ngModel)]="article.pourEnfants"
+      /></span>
+
+      <span
+        ><label for="gestionStock" class="label">{{
+          "article.quantiteAlerte" | translate
+        }}</label
+        ><input
+          name="gestionStock"
+          class="input"
+          type="text"
+          checked
+          [(ngModel)]="article.alerteStock"
+      /></span>
+      <span
+        ><label for="Actif" class="label">{{
+          "article.actif" | translate
+        }}</label
+        ><input
+          name="actif"
+          class="input"
+          type="checkbox"
+          checked
+          [(ngModel)]="article.actif"
+      /></span>
+
+      <span
+        ><input
+          [value]="actionButton"
+          class="submit-button"
+          type="submit"
+          [disabled]="!addArticleForm.form.valid"
+      /></span>
+      <span class="span-submit"></span>
+
+      <span class="span-submit"></span>
+      <button
+        type="reset"
+        class="clear-form-button"
+        (click)="clearForm(addArticleForm)"
+      >
+        {{ "button.clear" | translate }}
+      </button>
+    </fieldset>
+  </form>
+</div>
+<div class="div-search">
+  <fieldset class="fieldset-search">
+    <ng-container>
+      <table>
+        <tr>
+          <td>{{ "article.libelle" | translate }}</td>
+          <td>{{ "article.type" | translate }}</td>
+          <td>{{ "article.prix" | translate }}</td>
+          <td>{{ "article.enfant" | translate }}</td>
+          <td>{{ "article.quantiteAlerte" | translate }}</td>
+          <td>{{ "article.actif" | translate }}</td>
+          <td>{{ "article.actif" | translate }}</td>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr class="article.id" *ngFor="let item of articles$ | async">
+          <td>{{ item.libelle }}</td>
+          <td>{{ item.type.libelle }}</td>
+          <td>{{ item.prixInfPlafond }} - {{ item.prixSupPlafond }}</td>
+          <td>{{ item.pourEnfants }}</td>
+          <td>{{ item.quantiteStock }}</td>
+          <td>{{ item.actif }}</td>
+          <td>
+            <button
+              value="Update"
+              type="submit"
+              class="button-update"
+              (click)="setUpdateArticle(item)"
+            >
+              {{ updateLabel }}
+            </button>
+          </td>
+        </tr>
+      </table>
+    </ng-container>
+  </fieldset>
+</div>
+<!--app-back-to-menu></app-back-to-menu-->

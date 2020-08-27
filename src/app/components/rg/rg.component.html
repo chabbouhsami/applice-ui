@@ -6,7 +6,7 @@
 <div class="div-add-rg">
   <form #addRgForm="ngForm" (ngSubmit)="saveOrUpdateRg(addRgForm)">
     <fieldset>
-      <legend>{{ "rg.titre" | translate }}</legend>
+      <legend class="titre">{{ "rg.titre" | translate }}</legend>
       <span
         ><label for="age" class="rg-label">{{
           "rg.ageEnfant" | translate
@@ -37,8 +37,6 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #anciennete></mat-datepicker>
       </span>
-
-      <input cdkFocusInitial type="text" style="display: none;" />
 
       <span
         ><input
