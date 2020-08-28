@@ -1,26 +1,49 @@
-.div-add-rg {
+.div-add {
   margin-bottom: 2em;
   text-align: left;
   border: 10px solid white;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 1em;
+  margin-right: 1em;
   margin-top: 1em;
   background-color: white;
 }
 
-.form-group {
-  margin-left: auto;
-  margin-right: auto;
+.titre {
+  font-size: 105%;
+  padding: 0.5%;
+  margin-bottom: 1%;
+  background-image: linear-gradient(
+    to top,
+    #3f51b5 0%,
+    #a2b6df 100%,
+    #6b8cce 100%,
+    #a2b6df 100%
+  );
+  opacity: 0.8;
+  border-radius: 4px;
+  color: white;
 }
 
 span {
   display: block;
   margin-bottom: 1.5em;
 }
-.rg-label {
+
+.span-add-title {
+  font-size: 1.5em;
+  font-weight: 1em;
+}
+
+.label {
   margin-right: 10em;
 }
-.rg-input {
+
+input:disabled,
+input:read-only {
+  background: #a2b6df;
+}
+
+.input {
   width: 20%;
   height: 2em;
   margin-right: 1em;
@@ -31,7 +54,18 @@ span {
   left: 20em;
 }
 
-.rg-submit-button,
+.select {
+  width: 20.5%;
+  height: 2.5em;
+  margin-right: 1em;
+  border-radius: 4px; /* Rounded borders */
+  border: 1px solid #ccc; /* Gray border */
+  position: absolute;
+  left: 20em;
+}
+
+.update-button,
+.submit-button,
 .clear-form-button {
   margin-right: 1em;
   border-radius: 4px; /* Rounded borders */
@@ -45,9 +79,16 @@ span {
   left: 20em;
 }
 
-.rg-submit-button:hover,
+.submit-button:hover,
 .clear-form-button:hover {
   cursor: pointer;
+}
+
+.clear-form-button {
+  background-color: #ff7f50; /* Coral color border */
+  position: absolute;
+  left: 42em;
+  margin-top: -58px;
 }
 
 .ng-valid[required],

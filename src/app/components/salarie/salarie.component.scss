@@ -63,7 +63,7 @@ span {
 .clear-form-button {
   margin-right: 1em;
   border-radius: 4px; /* Rounded borders */
-  background-color: #42a948; /* Rounded borders */
+  background-color: #6b8cce; /* Rounded borders */
   border: 1px solid #ccc; /* Gray Color border */
   height: 1.7em;
   width: 10%;
@@ -87,7 +87,7 @@ span {
 
 .ng-valid[required],
 .ng-valid.required {
-  border-left: 5px solid #42a948; /* green */
+  border-left: 5px solid #6b8cce; /* green */
 }
 
 .ng-invalid:not(form) {
@@ -187,6 +187,6 @@ button:hover {
   cursor: pointer;
 }
 
-.button-update-salarie {
+.update-button-salarie {
   background: darkcyan;
 }

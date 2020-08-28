@@ -1,0 +1,148 @@
+<app-message-modal
+  *ngIf="displayMessageModal"
+  [messageModal]="messageModal"
+></app-message-modal>
+<div class="row add-div">
+  <div class="col-md-9">
+    <fieldset>
+      <legend class="titre">{{ "vente.titre" | translate }}</legend>
+      <span
+        ><label for="salarie" class="label">{{
+          "vente.salarie" | translate
+        }}</label>
+        <select
+          [(ngModel)]="entity.salarie"
+          name="salarie"
+          required
+          class="select"
+          (ngModelChange)="onSalarieChange($event)"
+        >
+          <option *ngFor="let c of salaries$ | async" [ngValue]="c"
+            >{{ c.lastName }} {{ c.firstName }}
+          </option>
+        </select>
+      </span>
+
+      <div *ngIf="entity.salarie">
+        <fieldset class="fieldset-search-salarie">
+          <ng-container>
+            <table>
+              <tr>
+                <td>{{ "vente.contrat" | translate }}</td>
+                <td>{{ entity.salarie.typeContratDTO.libelle }}</td>
+              </tr>
+              <tr>
+                <td>{{ "vente.enfants" | translate }}</td>
+                <td>{{ nbEnfants }}</td>
+              </tr>
+              <tr>
+                <td>{{ "vente.entree" | translate }}</td>
+                <td>{{ entity.salarie.dateEntree | date: "dd/MM/yyyy" }}</td>
+              </tr>
+              <tr>
+                <td>{{ "vente.plafond" | translate }}</td>
+                <td>{{ entity.salarie.plafond }}</td>
+              </tr>
+            </table>
+          </ng-container>
+        </fieldset>
+      </div>
+
+      <button
+        value="Update"
+        type="button"
+        class="update-button"
+        (click)="setDebutVente()"
+      >
+        {{ "vente.boutton.continue" | translate }}
+      </button>
+    </fieldset>
+    <div *ngIf="isVente" class="div-add">
+      <fieldset>
+        <legend class="titre">{{ "vente.choix.article" | translate }}</legend>
+        <span
+          ><label for="article" class="label">{{
+            "vente.article" | translate
+          }}</label>
+          <select
+            [(ngModel)]="entity.article"
+            name="article"
+            required
+            class="select"
+            (ngModelChange)="onArticleChange($event)"
+          >
+            <option *ngFor="let c of articles$ | async" [ngValue]="c"
+              >{{ c.libelle }}
+            </option>
+          </select>
+        </span>
+        <form #form="ngForm" (ngSubmit)="save(form)"></form>
+      </fieldset>
+    </div>
+    <div *ngIf="isArticle" class="div-add">
+      <fieldset>
+        <legend class="titre">{{ "vente.choix.vente" | translate }}</legend>
+        <span
+          ><label for="typeVente" class="label">{{
+            "vente.typeVente" | translate
+          }}</label>
+          <select
+            [(ngModel)]="entity.typeVente"
+            name="typeVente"
+            required
+            class="select"
+          >
+            <option *ngFor="let c of typeVente" [ngValue]="c.id"
+              >{{ c.value }}
+            </option>
+          </select>
+        </span>
+        <span
+          ><label for="quantite" class="salarie-label">{{
+            "vente.quantite" | translate
+          }}</label
+          ><input
+            name="quantite"
+            class="input"
+            type="text"
+            required
+            (blur)="calculMontant()"
+            [(ngModel)]="entity.nombre"
+        /></span>
+        <span
+          ><label for="montant" class="salarie-label">{{
+            "vente.montant" | translate
+          }}</label
+          ><input
+            name="montant"
+            class="input"
+            type="text"
+            readonly
+            [(ngModel)]="entity.montant"
+        /></span>
+        <span
+          ><label for="commentaire" class="label">{{
+            "vente.commentaire" | translate
+          }}</label
+          ><textarea
+            name="commentaire"
+            class="input"
+            type="text"
+            [(ngModel)]="entity.commentaire"
+          ></textarea>
+        </span>
+        <button
+          value="Update"
+          type="button"
+          class="submit-button"
+          (click)="addToCart()"
+        >
+          {{ "vente.boutton.add" | translate }}
+        </button>
+      </fieldset>
+    </div>
+  </div>
+  <div class="col-xs-2 offset0">
+    <app-cart></app-cart>
+  </div>
+</div>

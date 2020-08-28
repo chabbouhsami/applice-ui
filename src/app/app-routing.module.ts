@@ -10,6 +10,7 @@ import { LogginGuard } from './core/services/login/loggin.guard';
 import { SalarieComponent } from './components/salarie/salarie.component';
 import { ArticleComponent } from './components/article/article/article.component';
 import { ApprovisionnementComponent } from './components/approvisionnement/approvisionnement/approvisionnement.component';
+import { VenteComponent } from './components/vente/vente/vente.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
     canActivate: [LogginGuard],
   },
   { path: 'articles', component: ArticleComponent, canActivate: [LogginGuard] },
+  { path: 'vente', component: VenteComponent, canActivate: [LogginGuard] },
 
   { path: '**', component: PageNotFoundComponent },
 ];

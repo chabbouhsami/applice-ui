@@ -72,6 +72,33 @@
     "montant": "Montant > 0",
     "commentaire": "Commentaire"
   },
+  "vente": {
+    "titre": "Nouvelle vente",
+    "salarie": "Salarié",
+    "contrat": "Type de contrat",
+    "entree": "Date d'entrée",
+    "plafond": "Au dessus du plafond ?",
+    "enfants": "Nombre d'enfants",
+    "boutton": {
+      "continue": "Continuer",
+      "add": "Ajouter"
+    },
+    "choix": {
+      "article": "Choisissez un article",
+      "vente": "Vente"
+    },
+    "article": "Article",
+    "typeVente": "Type",
+    "quantite": "Quantité > 0",
+    "montant": "Montant",
+    "commentaire": "Commentaire"
+  },
+  "cart": {
+    "title": "Panier",
+    "total": "Total achats",
+    "article": "Articles",
+    "checkout": "Encaisser"
+  },
   "login": {
     "titre": "Identification",
     "identifiant": "Identifiant",

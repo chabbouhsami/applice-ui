@@ -23,6 +23,10 @@ import { SharedModule } from './shared/shared.module';
 import { WebStorageModule } from 'ngx-store';
 import { ArticleComponent } from './components/article/article/article.component';
 import { ApprovisionnementComponent } from './components/approvisionnement/approvisionnement/approvisionnement.component';
+import { VenteComponent } from './components/vente/vente/vente.component';
+import { MessageModalComponent } from './components/message/message-modal/message-modal.component';
+import { CartComponent } from './components/cart/cart/cart.component';
+import { AppSiteComponent } from './components/app-site/app-site/app-site.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,10 @@ import { ApprovisionnementComponent } from './components/approvisionnement/appro
     SalarieComponent,
     ArticleComponent,
     ApprovisionnementComponent,
+    VenteComponent,
+    MessageModalComponent,
+    CartComponent,
+    AppSiteComponent,
   ],
   imports: [
     BrowserModule,

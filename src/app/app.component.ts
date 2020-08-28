@@ -8,14 +8,5 @@ import { DateAdapter } from '@angular/material';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'applice-ui';
-
-  constructor(
-    public translate: TranslateService,
-    private adapter: DateAdapter<any>
-  ) {
-    adapter.setLocale('fr');
-    translate.setDefaultLang('fr');
-    translate.use('fr');
-  }
+  constructor() {}
 }
