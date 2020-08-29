@@ -1,14 +1,12 @@
 <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
   <div class="card-header text-center">{{ "cart.title" | translate }}</div>
   <div class="card-body">
-    <h5>{{ "cart.total" | translate }} ${{ total }}</h5>
+    <h5>{{ "cart.total" | translate }} {{ cart.total | currency: "EUR" }}</h5>
     <hr />
     <h6 class="card-title">{{ "cart.article" | translate }}</h6>
 
     <div style="font-size: small;" *ngFor="let order of cart.ventes">
-      {{ order.article.libelle }}
-      -
-      {{ order.nombre }}
+      {{ order.quantiteSigne }} {{ order.article.libelle }}
     </div>
     <button
       class="btn btn-light btn-block"

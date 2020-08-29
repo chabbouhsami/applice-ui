@@ -23,7 +23,6 @@ export class RgComponent implements OnInit {
 
   ngOnInit(): void {
     this.rgService.getRg().subscribe((rg) => {
-      console.log(rg);
       this.rg = rg;
     });
     this.translate.get('button.save').subscribe((translation) => {

@@ -33,6 +33,10 @@ export class ArticleService {
     );
   }
 
+  getArticle(code: number): Observable<Article> {
+    return this.http.get<Article>(this.baseUrl + code, this.optionRequete);
+  }
+
   saveArticle(entity: Article): Observable<Article> {
     return this.http.post<Article>(this.baseUrl, entity, this.optionRequete);
   }

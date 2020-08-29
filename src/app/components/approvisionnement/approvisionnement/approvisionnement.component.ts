@@ -53,23 +53,17 @@ export class ApprovisionnementComponent implements OnInit {
       this.buildMessageModal('Error in the form');
     }
     this.updateApprovisionnement();
-    console.log(this.approvisionnement.article);
     this.saveNewApprovisionnement(this.approvisionnement);
     form.reset();
   }
 
   updateApprovisionnement(): void {
+    const signe = this.approvisionnement.type === 'S' ? -1 : 1;
+
     this.approvisionnement.montantSigne =
-      this.approvisionnement.type === 'S'
-        ? -1 * this.approvisionnement.montantTotal
-        : this.approvisionnement.montantTotal;
+      signe * this.approvisionnement.montantTotal;
     this.approvisionnement.nombre =
-      Number(this.stock) +
-      Number(
-        this.approvisionnement.type === 'S'
-          ? -1 * this.approvisionnement.quantite
-          : this.approvisionnement.quantite
-      );
+      Number(this.stock) + Number(signe * this.approvisionnement.quantite);
     this.approvisionnement.dateAppro = new Date();
     this.approvisionnement.user = JSON.parse(this.storage.getData('user'));
   }
@@ -78,7 +72,6 @@ export class ApprovisionnementComponent implements OnInit {
     this.service.saveEntity(entity).subscribe(
       (result: Approvisionnement) => {
         if (result.code) {
-          console.log(result);
           this.buildMessageModal('Save operation correctly done');
         }
       },

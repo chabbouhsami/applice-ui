@@ -76,7 +76,6 @@
             </option>
           </select>
         </span>
-        <form #form="ngForm" (ngSubmit)="save(form)"></form>
       </fieldset>
     </div>
     <div *ngIf="isArticle" class="div-add">
@@ -143,6 +142,30 @@
     </div>
   </div>
   <div class="col-xs-2 offset0">
-    <app-cart></app-cart>
+    <app-cart (paymentDone)="firePaymentDone($event)"></app-cart>
+  </div>
+  <div class="div-search-salarie" *ngIf="entity.salarie">
+    <fieldset class="fieldset-search">
+      <ng-container>
+        <table>
+          <tr>
+            <td>{{ "vente.article" | translate }}</td>
+            <td>{{ "vente.typeVente" | translate }}</td>
+            <td>{{ "vente.quantite" | translate }}</td>
+            <td>{{ "vente.montant" | translate }}</td>
+            <td>{{ "vente.date" | translate }}</td>
+            <th></th>
+            <th></th>
+          </tr>
+          <tr class="vente.id" *ngFor="let vente of ventes$ | async">
+            <td>{{ vente.article.libelle }}</td>
+            <td>{{ vente.typeVente }}</td>
+            <td>{{ vente.quantite }}</td>
+            <td>{{ vente.montant }}</td>
+            <td>{{ vente.date | date: "dd/MM/yyyy" }}</td>
+          </tr>
+        </table></ng-container
+      >
+    </fieldset>
   </div>
 </div>

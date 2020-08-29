@@ -1,14 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { ArticleService } from 'src/app/core/services/article/article.service';
 import { EnfantService } from 'src/app/core/services/enfant/enfant.service';
 import { SalarieService } from 'src/app/core/services/salarie/salarie.service';
+import { VenteService } from 'src/app/core/services/vente/vente.service';
 import { Article } from 'src/app/models/article/article';
 import { Salarie } from 'src/app/models/salarie/salarie';
 import { Vente } from 'src/app/models/vente/vente';
 import { CartComponent } from '../../cart/cart/cart.component';
+import { AppStorageService } from 'src/app/core/services/storage/app-storage.service';
+import { User } from 'src/app/models/user/user';
 @Component({
   selector: 'app-vente',
   templateUrl: './vente.component.html',
@@ -20,6 +22,7 @@ export class VenteComponent implements OnInit {
   entity = new Vente();
   salaries$: Observable<Salarie[]>;
   articles$: Observable<Article[]>;
+  ventes$: Observable<Vente[]>;
   nbEnfants = 0;
   isVente = false;
   isArticle = false;
@@ -32,18 +35,21 @@ export class VenteComponent implements OnInit {
   ];
   constructor(
     private salarieService: SalarieService,
-    private translate: TranslateService,
     private enfantsSerice: EnfantService,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private venteService: VenteService,
+    private store: AppStorageService
   ) {}
 
   ngOnInit(): void {
     this.salaries$ = this.salarieService.getAll();
     this.articles$ = this.articleService.loadAll();
+    this.entity.vendeur = JSON.parse(this.store.getData('user'));
   }
 
   onSalarieChange(event): void {
     if (event) {
+      this.isArticle = false;
       this.enfantsSerice.getAllByParent(event.code).subscribe((enfants) => {
         if (enfants) {
           this.nbEnfants = enfants.length;
@@ -51,7 +57,14 @@ export class VenteComponent implements OnInit {
           this.nbEnfants = 0;
         }
       });
+      this.ventes$ = this.venteService.loadAll(event.code);
     }
+  }
+
+  firePaymentDone(event): void {
+    this.entity = new Vente();
+    this.isArticle = false;
+    this.isVente = false;
   }
 
   onArticleChange(event): void {
@@ -74,9 +87,24 @@ export class VenteComponent implements OnInit {
   addToCart(): void {
     this.isArticle = false;
     const vente = new Vente();
+    this.updateVente();
     Object.assign(vente, this.entity);
     this.cart$.cart.ventes.push(vente);
-    this.cart$.total += this.entity.montant;
+    this.cart$.cart.total += Number(this.entity.montantSigne);
+    this.resetEntity(false);
+  }
+
+  updateVente(): void {
+    const signe = this.entity.typeVente === 'A' ? '-' : '+';
+    this.entity.quantiteSigne = signe + this.entity.nombre;
+    this.entity.montantSigne = signe + this.entity.montant;
+  }
+
+  resetEntity(totally: boolean): void {
+    if (totally) {
+      Object.assign(this.entity, new Vente());
+      return;
+    }
     this.entity.article = null;
     this.entity.nombre = null;
     this.entity.montant = null;

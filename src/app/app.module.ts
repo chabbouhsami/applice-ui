@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,6 +27,7 @@ import { VenteComponent } from './components/vente/vente/vente.component';
 import { MessageModalComponent } from './components/message/message-modal/message-modal.component';
 import { CartComponent } from './components/cart/cart/cart.component';
 import { AppSiteComponent } from './components/app-site/app-site/app-site.component';
+import '@angular/common/locales/global/fr';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,12 @@ import { AppSiteComponent } from './components/app-site/app-site/app-site.compon
     }),
   ],
   exports: [MaterialModule],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'fr-FR',
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

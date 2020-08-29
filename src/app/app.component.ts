@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { DateAdapter } from '@angular/material';
 
 @Component({
   selector: 'app-root',
