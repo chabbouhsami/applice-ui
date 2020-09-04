@@ -3,7 +3,7 @@
   [messageModal]="messageModal"
 ></app-message-modal>
 
-<div class="div-add-typeArticle">
+<div class="div-add">
   <form
     #addArticleForm="ngForm"
     (ngSubmit)="saveOrUpdateArticle(addArticleForm)"
@@ -11,101 +11,101 @@
     <fieldset>
       <legend class="titre">{{ "typeArticle.titre" | translate }}</legend>
       <span
-        ><label for="nom" class="typeArticle-label">{{
+        ><label for="nom" class="label">{{
           "typeArticle.libelle" | translate
         }}</label
         ><input
           name="nom"
-          class="typeArticle-input"
+          class="input"
           type="text"
           required
           [(ngModel)]="typeArticle.libelle"
       /></span>
       <span
-        ><label for="Prenom" class="typeArticle-label">{{
+        ><label for="Prenom" class="label">{{
           "typeArticle.quantiteMois" | translate
         }}</label
         ><input
           name="prenom"
-          class="typeArticle-input"
+          class="input"
           type="text"
           required
           [(ngModel)]="typeArticle.quantiteMois"
       /></span>
       <span
-        ><label for="Email" class="typeArticle-label">{{
+        ><label for="Email" class="label">{{
           "typeArticle.quantiteAn" | translate
         }}</label
         ><input
           name="quantiteAn"
-          class="typeArticle-input"
+          class="input"
           type="text"
           required
           [(ngModel)]="typeArticle.quantiteAn"
       /></span>
       <span
-        ><label for="montantMois" class="typeArticle-label">{{
+        ><label for="montantMois" class="label">{{
           "typeArticle.montantMois" | translate
         }}</label
         ><input
           name="montantMois"
-          class="typeArticle-input"
+          class="input"
           type="montantMois"
           required
           [(ngModel)]="typeArticle.montantMois"
       /></span>
       <span
-        ><label for="montantAn" class="typeArticle-label">{{
+        ><label for="montantAn" class="label">{{
           "typeArticle.montantAn" | translate
         }}</label
         ><input
           name="montantAn"
-          class="typeArticle-input"
+          class="input"
           type="text"
           required
           [(ngModel)]="typeArticle.montantAn"
       /></span>
       <span
-        ><label for="anciennete" class="typeArticle-label">{{
+        ><label for="anciennete" class="label">{{
           "typeArticle.anciennete" | translate
         }}</label
         ><input
           name="anciennete"
-          class="typeArticle-input"
+          class="input"
           type="anciennete"
           required
           [(ngModel)]="typeArticle.anciennete"
       /></span>
 
       <span
-        ><label for="moisInterditVente" class="typeArticle-label">{{
+        ><label for="moisInterditVente" class="label">{{
           "typeArticle.moisInterditVente" | translate
         }}</label
         ><input
           name="moisInterditVente"
-          class="typeArticle-input"
+          class="input"
           type="text"
           [(ngModel)]="typeArticle.moisInterditVente"
       /></span>
 
       <span
-        ><label for="gestionStock" class="typeArticle-label">{{
+        ><label for="gestionStock" class="label">{{
           "typeArticle.gestionStock" | translate
         }}</label
         ><input
           name="gestionStock"
-          class="typeArticle-input"
+          class="input"
           type="checkbox"
           checked
           [(ngModel)]="typeArticle.gestionStock"
       /></span>
       <span
-        ><label for="Actif" class="typeArticle-label">{{
+        ><label for="Actif" class="label">{{
           "typeArticle.actif" | translate
         }}</label
         ><input
           name="actif"
-          class="typeArticle-input"
+          class="input"
           type="checkbox"
           checked
           [(ngModel)]="typeArticle.actif"
@@ -114,21 +114,21 @@
       <span
         ><input
           [value]="actionButton"
-          class="typeArticle-submit-button"
+          class="submit-button"
           type="submit"
           [disabled]="!addArticleForm.form.valid"
       /></span>
-      <span class="span-typeArticle-submit"></span>
+      <span class="span-submit"></span>
 
-      <span class="span-typeArticle-submit"></span>
+      <span class="span-submit"></span>
       <button class="clear-form-button" (click)="clearForm(addArticleForm)">
         {{ "button.clear" | translate }}
       </button>
     </fieldset>
   </form>
 </div>
-<div class="div-search-typeArticle">
-  <fieldset class="fieldset-search-typeArticle">
+<div class="div-search">
+  <fieldset class="fieldset-search">
     <ng-container>
       <table>
         <tr>
@@ -160,7 +160,7 @@
             <button
               value="Update"
               type="submit"
-              class="update-button-typeArticle"
+              class="update-button"
               (click)="setUpdateArticle(typeArticle)"
             >
               {{ updateLabel }}

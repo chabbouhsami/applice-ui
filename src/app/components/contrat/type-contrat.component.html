@@ -3,7 +3,7 @@
   [messageModal]="messageModal"
 ></app-message-modal>
 
-<div class="div-add-typeContrat">
+<div class="div-add">
   <form
     #addContratForm="ngForm"
     (ngSubmit)="saveOrUpdateContrat(addContratForm)"
@@ -11,23 +11,23 @@
     <fieldset>
       <legend class="titre"></legend>
       <span
-        ><label for="nom" class="typeContrat-label">{{
+        ><label for="nom" class="label">{{
           "typeContrat.libelle" | translate
         }}</label
         ><input
           name="nom"
-          class="typeContrat-input"
+          class="input"
           type="text"
           required
           [(ngModel)]="typeContrat.libelle"
       /></span>
       <span
-        ><label for="Droit" class="typeContrat-label">{{
+        ><label for="Droit" class="label">{{
           "typeContrat.droit" | translate
         }}</label>
         <input
           name="droit"
-          class="typeContrat-input"
+          class="input"
           type="checkbox"
           checked
           [(ngModel)]="typeContrat.droit"
@@ -35,12 +35,12 @@
       </span>
 
       <span
-        ><label for="Actif" class="typeContrat-label">{{
+        ><label for="Actif" class="label">{{
           "typeContrat.actif" | translate
         }}</label
         ><input
           name="actif"
-          class="typeContrat-input"
+          class="input"
           type="checkbox"
           checked
           [(ngModel)]="typeContrat.actif"
@@ -49,21 +49,21 @@
       <span
         ><input
           [value]="actionButton"
-          class="typeContrat-submit-button"
+          class="submit-button"
           type="submit"
           [disabled]="!addContratForm.form.valid"
       /></span>
-      <span class="span-typeContrat-submit"></span>
+      <span class="span-submit"></span>
 
-      <span class="span-typeContrat-submit"></span>
+      <span class="span-submit"></span>
       <button class="clear-form-button" (click)="clearForm(addContratForm)">
         {{ "button.clear" | translate }}
       </button>
     </fieldset>
   </form>
 </div>
-<div class="div-search-typeContrat">
-  <fieldset class="fieldset-search-typeContrat">
+<div class="div-search">
+  <fieldset class="fieldset-search">
     <ng-container>
       <table>
         <tr>
@@ -81,7 +81,7 @@
             <button
               value="Update"
               type="submit"
-              class="update-button-typeContrat"
+              class="update-button"
               (click)="setUpdateContrat(typeContrat)"
             >
               {{ updateLabel }}

@@ -1,4 +1,4 @@
-<div class="div-add-rg">
+<div class="div-add">
   <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
     <fieldset>
       <legend class="titre">{{ "login.titre" | translate }}</legend>
@@ -6,12 +6,12 @@
         class="form-group"
         [ngClass]="{ 'has-error': f.submitted && !email.valid }"
       >
-        <label for="email" class="rg-label">{{
+        <label for="email" class="label">{{
           "login.identifiant" | translate
         }}</label>
         <input
           type="text"
-          class="rg-input"
+          class="input"
           name="email"
           id="email"
           [(ngModel)]="user.email"
@@ -24,12 +24,12 @@
         class="form-group"
         [ngClass]="{ 'has-error': f.submitted && !password.valid }"
       >
-        <label for="password" class="rg-label">{{
+        <label for="password" class="label">{{
           "login.password" | translate
         }}</label>
         <input
           type="password"
-          class="rg-input"
+          class="input"
           name="password"
           id="password"
           [(ngModel)]="user.password"
@@ -39,11 +39,7 @@
         />
       </span>
       <span>
-        <button
-          class="rg-submit-button"
-          type="submit"
-          [disabled]="!f.form.valid"
-        >
+        <button class="submit-button" type="submit" [disabled]="!f.form.valid">
           {{ "login.button" | translate }}
         </button>
       </span>

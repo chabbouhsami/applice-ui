@@ -11,6 +11,8 @@ import { SalarieComponent } from './components/salarie/salarie.component';
 import { ArticleComponent } from './components/article/article/article.component';
 import { ApprovisionnementComponent } from './components/approvisionnement/approvisionnement/approvisionnement.component';
 import { VenteComponent } from './components/vente/vente/vente.component';
+import { StockComponent } from './components/article/stock/stock.component';
+import { AlerteComponent } from './components/article/stock/alerte/alerte.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -38,6 +40,8 @@ const routes: Routes = [
   },
   { path: 'articles', component: ArticleComponent, canActivate: [LogginGuard] },
   { path: 'vente', component: VenteComponent, canActivate: [LogginGuard] },
+  { path: 'stketat', component: StockComponent, canActivate: [LogginGuard] },
+  { path: 'stkalert', component: AlerteComponent, canActivate: [LogginGuard] },
 
   { path: '**', component: PageNotFoundComponent },
 ];

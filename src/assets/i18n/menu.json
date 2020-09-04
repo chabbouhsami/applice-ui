@@ -1,0 +1,55 @@
+{
+  "menu": {
+    "vente": {
+      "label": "Vente",
+      "acces": "V",
+      "items": [
+        {
+          "label": "Nouvelle vente",
+          "link": "vente"
+        }
+      ]
+    },
+    "administration": {
+      "label": "Administration",
+      "acces": "A",
+      "items": [
+        {
+          "label": "Approvisionnement",
+          "link": "approvisionnement"
+        },
+        { "label": "Articles", "link": "articles" },
+        {
+          "label": "Renseignements généraux",
+          "link": "rg"
+        },
+        { "label": "Salariés", "link": "salarie" },
+        { "label": "Type d'articles", "link": "typart" },
+        { "label": "Types de contrat", "link": "typcon" },
+        { "label": "Utilisateurs", "link": "users" }
+      ]
+    },
+    "edition": {
+      "label": "Edition",
+      "acces": "A",
+      "items": [
+        { "label": "Alerte de stock", "link": "stkalert" },
+        { "label": "Etat des stocks", "link": "stketat" },
+        {
+          "label": "Consommation individuelle",
+          "link": "consommation"
+        }
+      ]
+    },
+    "traitement": {
+      "label": "Traitement",
+      "acces": "A",
+      "items": [
+        {
+          "label": "Traitement",
+          "link": "traitement"
+        }
+      ]
+    }
+  }
+}

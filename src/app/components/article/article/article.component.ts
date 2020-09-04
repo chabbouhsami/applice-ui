@@ -48,7 +48,6 @@ export class ArticleComponent implements OnInit {
     if (!addArticleForm.valid) {
       this.buildMessageModal('Error in the form');
     }
-    debugger;
     if (this.actionButton === this.saveLabel) {
       this.saveNewArticle(this.article);
     } else if (this.actionButton === this.updateLabel) {

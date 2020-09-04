@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { AppStorageService } from 'src/app/core/services/storage/app-storage.service';
 import { LoginService } from 'src/app/core/services/login/login.service';
-import { Menu } from 'src/app/shared/menu/menu';
-import { Observable } from 'rxjs';
+import { AppStorageService } from 'src/app/core/services/storage/app-storage.service';
 import { User } from 'src/app/models/user/user';
+import { Menu } from 'src/app/shared/menu/menu';
 
 @Component({
   selector: 'app-menu',
