@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DateAdapter } from '@angular/material/core';
 import { TranslateService } from '@ngx-translate/core';
-import { DateAdapter } from '@angular/material';
 
 @Component({
   selector: 'app-app-site',

@@ -2,7 +2,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import '@angular/common/locales/global/fr';
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatCardModule, MatDatepickerModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -60,9 +59,7 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     HttpClientModule,
     MaterialModule,
-    MatDatepickerModule,
     WebStorageModule,
-    MatCardModule,
     TooltipModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -72,7 +69,6 @@ import { SharedModule } from './shared/shared.module';
       },
     }),
   ],
-  exports: [MaterialModule],
   providers: [
     {
       provide: LOCALE_ID,
