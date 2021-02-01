@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TypeContratComponent } from './type-contrat.component';
 
@@ -6,7 +6,7 @@ describe('TypeContratComponent', () => {
   let component: TypeContratComponent;
   let fixture: ComponentFixture<TypeContratComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TypeContratComponent],
     }).compileComponents();
