@@ -4,13 +4,12 @@ import { Observable } from 'rxjs';
 import { ArticleService } from 'src/app/core/services/article/article.service';
 import { EnfantService } from 'src/app/core/services/enfant/enfant.service';
 import { SalarieService } from 'src/app/core/services/salarie/salarie.service';
+import { AppStorageService } from 'src/app/core/services/storage/app-storage.service';
 import { VenteService } from 'src/app/core/services/vente/vente.service';
 import { Article } from 'src/app/models/article/article';
 import { Salarie } from 'src/app/models/salarie/salarie';
 import { Vente } from 'src/app/models/vente/vente';
 import { CartComponent } from '../../cart/cart/cart.component';
-import { AppStorageService } from 'src/app/core/services/storage/app-storage.service';
-import { User } from 'src/app/models/user/user';
 @Component({
   selector: 'app-vente',
   templateUrl: './vente.component.html',
