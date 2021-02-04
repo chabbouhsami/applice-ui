@@ -1,0 +1,18 @@
+<span *ngIf="isUserConnected">
+  <mat-nav-list *ngFor="let item of menu">
+    <span *ngIf="hasAccess(item)">
+      <button mat-button [matMenuTriggerFor]="menu">{{ item.titre }}</button>
+      <mat-menu #menu="matMenu">
+        <div *ngFor="let subitem of item.children" class="navigation-items">
+          <button
+            mat-menu-item
+            [routerLink]="subitem.route"
+            (click)="onSidenavClose()"
+          >
+            {{ subitem.titre }}
+          </button>
+        </div>
+      </mat-menu>
+    </span>
+  </mat-nav-list>
+</span>

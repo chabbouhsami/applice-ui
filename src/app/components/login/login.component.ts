@@ -12,22 +12,16 @@ import { AppStorageService } from 'src/app/core/services/storage/app-storage.ser
 export class LoginComponent implements OnInit {
   user: User = new User();
 
-  constructor(
-    private router: Router,
-    private service: LoginService,
-    private storage: AppStorageService
-  ) {}
+  constructor(private router: Router, private service: LoginService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.service.logout();
+  }
 
   login(): void {
-    this.service.login(this.user).subscribe((result) => {
-      this.user = result;
-      this.user.password = '*****';
-      this.user.firstName = '*****';
-      this.user.lastName = '*****';
-      this.user.email = '*****';
-      this.storage.saveData('user', this.user);
+    this.service.login(this.user);
+
+    this.service.loggedIn.subscribe((result) => {
       this.router.navigate(['/users']);
     });
   }
